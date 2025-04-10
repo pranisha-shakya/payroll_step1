@@ -1,0 +1,22 @@
+﻿@model payroll_step1.Models.Attendance
+
+@{
+    ViewData["Title"] = "Delete Attendance";
+}
+
+<h2>Are you sure you want to delete this record?</h2>
+
+<table class="table">
+    <tr><th>Employee</th><td>@Model.Employee?.Name</td></tr>
+    <tr><th>Date</th><td>@Model.Date.ToShortDateString()</td></tr>
+    <tr><th>Check-In</th><td>@Model.CheckInTime?.ToString(@"hh\:mm")</td></tr>
+    <tr><th>Check-Out</th><td>@Model.CheckOutTime?.ToString(@"hh\:mm")</td></tr>
+    <tr><th>Hours Worked</th><td>@Model.HoursWorked</td></tr>
+    <tr><th>Status</th><td>@Model.Status</td></tr>
+</table>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="AttendanceID" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

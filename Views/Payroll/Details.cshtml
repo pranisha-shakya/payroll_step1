@@ -1,0 +1,17 @@
+﻿@model payroll_step1.Models.Payroll
+
+@{
+    ViewData["Title"] = "Payroll Details";
+}
+
+<h2>Payroll Details</h2>
+
+<table class="table">
+    <tr><th>Employee</th><td>@Model.Employee?.Name</td></tr>
+    <tr><th>Month</th><td>@Model.Month</td></tr>
+    <tr><th>Gross Salary</th><td>@Model.GrossSalary.ToString("C")</td></tr>
+    <tr><th>Deductions</th><td>@Model.Deductions.ToString("C")</td></tr>
+    <tr><th>Net Salary</th><td>@Model.NetSalary.ToString("C")</td></tr>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

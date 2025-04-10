@@ -1,0 +1,40 @@
+﻿@model IEnumerable<payroll_step1.Models.Attendance>
+
+@{
+    ViewData["Title"] = "Attendance Records";
+}
+
+<h2>Attendance Records</h2>
+<a asp-action="Create" class="btn btn-primary mb-3">Add Attendance</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Date</th>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+            <th>Hours Worked</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Employee?.Name</td>
+                <td>@item.Date.ToShortDateString()</td>
+                <td>@item.CheckInTime?.ToString(@"hh\:mm")</td>
+                <td>@item.CheckOutTime?.ToString(@"hh\:mm")</td>
+                <td>@item.HoursWorked</td>
+                <td>@item.Status</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AttendanceID" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.AttendanceID" class="btn btn-info btn-sm">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.AttendanceID" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

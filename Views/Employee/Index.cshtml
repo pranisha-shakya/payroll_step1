@@ -1,0 +1,25 @@
+﻿@model IEnumerable<payroll_step1.Models.Employee>
+
+<h2>Employee List</h2>
+<a asp-action="Create" class="btn btn-primary">Add Employee</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Basic Salary</th>
+            <th>Allowances</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Designation</td>
+                <td>@item.BasicSalary</td>
+                <td>@item.Allowances</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<payroll_step1.Models.Payroll>
+
+@{
+    ViewData["Title"] = "Payroll Records";
+}
+
+<h2>Payroll Records</h2>
+<a asp-action="Create" class="btn btn-primary mb-3">Generate Payroll</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Month</th>
+            <th>Gross Salary</th>
+            <th>Deductions</th>
+            <th>Net Salary</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Employee?.Name</td>
+                <td>@item.Month</td>
+                <td>@item.GrossSalary.ToString("C")</td>
+                <td>@item.Deductions.ToString("C")</td>
+                <td>@item.NetSalary.ToString("C")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.PayrollID" class="btn btn-info btn-sm">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
